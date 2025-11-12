@@ -6,11 +6,11 @@ export default function Resume() {
             <div className="w-3/4 bg-white p-10 text-black">
                 <h1 className="text-5xl text-blue-400">Makayla Boyer</h1>
                 <p className="text-xl">Freelance Web Developer</p>
-                <div className="flex flex-col md:flex-row flex-wrap md:gap-10">
+                <div className="flex flex-col md:flex-row flex-wrap md:gap-2">
                     <p>Dayton, OH </p>
-                    <p className="text-blue-400">•</p>
+                    <p className="text-blue-400 md:block hidden">•</p>
                     <Link href="https://makaylaboyer.com" className="hover:text-blue-400">makaylaboyer.com</Link>
-                    <p className="text-blue-400">•</p>
+                    <p className="text-blue-400 md:block hidden">•</p>
                     <Link href="https://github.com/makayla1205" className="hover:text-blue-400">https://github.com/makayla1205</Link>
                 </div>
                 <p className="mt-3">Creative and detail-oriented freelance web developer specializing in modern JavaScript frameworks including 
