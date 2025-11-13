@@ -7,9 +7,13 @@ const Navlinks = () => (
     <ul className="flex flex-col md:flex-row md:items-center md:gap-5">
         <li><Link href="/">Home</Link></li>
         <li><Link href="/projects">Projects</Link></li>
-        <li><Link href="/resume">Resume</Link></li>
     </ul>
 )
+
+const navItems = [
+    {name: "Home", href:"/"},
+    {name: "Projects", href:"/projects"},
+]
 
 export default function Navbar() {
     const [open, setOpen] = useState(false)
@@ -34,10 +38,12 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const closeMenu = () => {setOpen(false)}
+
     return (
         <header className={`z-100 fixed top-0 left-0 w-full transition-all duration-300 ease-in-out border-b border-slate-700 ${scrolled ? "bg-gradient-to-r from-slate-900/90 to-purple-800/90 shadow-sm" : "bg-transparent"}`}>
             <div className="flex flex-row items-center justify-between p-5 pl-10 pr-10">
-                <div className="text-3xl">
+                <div className="text-3xl z-1">
                     <Link href="/">Makayla Boyer</Link>
                 </div>
                 <nav className="hidden md:block">
@@ -52,8 +58,12 @@ export default function Navbar() {
                     <Menu />
                 </button>
             </div> 
-            <nav className={`absolute top-0 w-full md:hidden border-t bg-black h-screen ${open ? "block" : "hidden"} p-4`}>
-                <Navlinks />
+            <nav className={`absolute top-0 w-full md:hidden border-t bg-black h-screen ${open ? "block" : "hidden"} pt-20`}>
+                <ul className="flex flex-col pl-10">
+                {navItems.map((item)=> {
+                    return <li className="mt-3 mb-3 text-xl"><Link href={`${item.href}`} onClick={closeMenu}>{item.name}</Link></li>
+                })}
+                </ul>
             </nav> 
         </header>
     );

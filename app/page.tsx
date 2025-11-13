@@ -84,7 +84,7 @@ export default async function Home() {
       <div className="min-h-screen p-20 bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800 flex flex-col items-center justify-center gap-10">
         <h1 className="text-6xl text-center">Latest Projects</h1>
         <p className="text-center text-lg lg:w-3/4">Where ideas turn into interactive experiences — explore my most recent creations.</p>
-        <div className="flex flex-col lg:flex-row gap-10">
+        <div className="flex flex-col lg:flex-row gap-10 flex-wrap justify-center items-center">
           {projects.map((p) => (
             <Card key={p.id} project={p}/>
           ))}
