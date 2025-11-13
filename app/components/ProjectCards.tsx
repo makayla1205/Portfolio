@@ -35,6 +35,7 @@ export default function Card({project}:ProjectCardProps) {
                 alt={project.image.alt || project.title}
                 width={800}
                 height={400}
+                quality={100}
                 className="rounded-tl-md rounded-tr-md"
             /></Link>
             )}

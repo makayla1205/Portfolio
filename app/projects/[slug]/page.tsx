@@ -55,6 +55,7 @@ export default async function Project({params}: {params: {slug: string};}) {
                     alt={project.image.alt || project.title}
                     width={1200}
                     height={200}
+                    quality={100}
                     className="rounded-xl"
                 />
             </div>
