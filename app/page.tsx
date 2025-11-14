@@ -104,7 +104,7 @@ export default async function Home() {
       <div className="min-h-screen p-20 bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800 flex flex-col items-center justify-center gap-10">
         <h1 className="text-6xl text-center">Latest Projects</h1>
         <p className="text-center text-lg lg:w-3/4">Where ideas turn into interactive experiences — explore my most recent creations.</p>
-       <div className="grid grid-cols-[repeat(auto-fill,_minmax(400px,_1fr))] gap-10 w-full"> 
+       <div className="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] md:grid-cols-[repeat(auto-fill,_minmax(400px,_1fr))] gap-10 w-full"> 
           {projects.map((p) => (
             <Card key={p._id} project={p}/>
           ))}

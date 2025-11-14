@@ -62,7 +62,7 @@ export default async function Projects() {
             <p className="text-center text-lg lg:w-3/4">A collection of my creative and technical work — from web applications and e-commerce sites to digital 
                 experiences that blend clean design with purposeful functionality. Each project reflects my passion for 
                 intuitive UI, seamless UX, and thoughtful problem-solving through code and design.</p>
-            <div className="grid grid-cols-[repeat(auto-fill,_minmax(400px,_1fr))] gap-10 w-full"> 
+            <div className="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] md:grid-cols-[repeat(auto-fill,_minmax(400px,_1fr))] gap-10 w-full"> 
                 {projects.map((p) => (
                     
                     <Card key={p._id} project={p}/>
