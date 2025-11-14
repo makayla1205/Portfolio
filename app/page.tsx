@@ -10,16 +10,23 @@ import Link from "next/link";
 import Card from "./components/ProjectCards";
 
 const PROJECT_QUERY = `*[_type == 'Project']{
-  _id, title, "slug": slug.current, linkGithub, linkDemo, 
-  image {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    }, 
-  tools, "description":description[0].children[0].text
- } | order(_createdAt desc) [0...3]`
+    _id, title, "slug": slug.current, GithubLink, DemoLink, 
+    CoverImage {
+        asset->{
+            _id,
+            url
+        },
+        alt
+        }, 
+    tools[]->{_id, logo {
+        asset->{
+            _id,
+            url
+        },
+        alt
+        }, name}, 
+    "description":description[0].children[0].text, status->{name}
+    } | order(_createdAt) [0...3]`
 
 const options = { next: { revalidate: 30 } };
 
@@ -32,19 +39,32 @@ export interface SanityImage {
   alt?: string;
 }
 
+interface Tools {
+  name: string,
+  logo: SanityImage
+}
+
+
+interface Status {
+  name: string
+}
+
 interface Project {
-    id: number,
+    _id: number,
     title: string,
     slug: string,
     description: string,
-    image: SanityImage,
-    linkGithub: string,
-    linkDemo: string,
-    tools: string
+    CoverImage: SanityImage,
+    GithubLink: string,
+    DemoLink: string,
+    tools: Tools[],
+    status: Status
 }
+
 
 export default async function Home() {
   const projects = await client.fetch<Project[]>(PROJECT_QUERY, {}, options);
+  console.log(projects)
   return (
     <div>
       <Cta/>
@@ -84,9 +104,9 @@ export default async function Home() {
       <div className="min-h-screen p-20 bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800 flex flex-col items-center justify-center gap-10">
         <h1 className="text-6xl text-center">Latest Projects</h1>
         <p className="text-center text-lg lg:w-3/4">Where ideas turn into interactive experiences — explore my most recent creations.</p>
-        <div className="flex flex-col lg:flex-row gap-10 flex-wrap justify-center items-center">
+       <div className="grid grid-cols-[repeat(auto-fill,_minmax(400px,_1fr))] gap-10 w-full"> 
           {projects.map((p) => (
-            <Card key={p.id} project={p}/>
+            <Card key={p._id} project={p}/>
           ))}
         </div>
         <button className="bg-blue-900 p-3 pl-5 pr-5 rounded-md text-xl"><Link href="/projects">View More</Link></button>

@@ -3,16 +3,23 @@ import Card from "../components/ProjectCards";
 import Link from "next/link";
 
 const PROJECT_QUERY = `*[_type == 'Project']{
-  _id, title, "slug": slug.current, linkGithub, linkDemo, 
-  image {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    }, 
-  tools, "description":description[0].children[0].text
- } | order(_createdAt) `
+    _id, title, "slug": slug.current, GithubLink, DemoLink, 
+    CoverImage {
+        asset->{
+            _id,
+            url
+        },
+        alt
+        }, 
+    tools[]->{_id, logo {
+        asset->{
+            _id,
+            url
+        },
+        alt
+        }, name}, 
+    "description":description[0].children[0].text, status->{name}
+    } | order(_createdAt)`
 
 const options = { next: { revalidate: 30 } };
 
@@ -25,15 +32,25 @@ export interface SanityImage {
   alt?: string;
 }
 
+interface Tools {
+  name: string,
+  logo: SanityImage
+}
+
+interface Status {
+  name: string
+}
+
 interface Project {
-    id: number,
+    _id: number,
     title: string,
     slug: string,
     description: string,
-    image: SanityImage,
-    linkGithub: string,
-    linkDemo: string,
-    tools: string
+    CoverImage: SanityImage,
+    GithubLink: string,
+    DemoLink: string,
+    tools: Tools[],
+    status: Status
 }
 
 export default async function Projects() {
@@ -45,11 +62,11 @@ export default async function Projects() {
             <p className="text-center text-lg lg:w-3/4">A collection of my creative and technical work — from web applications and e-commerce sites to digital 
                 experiences that blend clean design with purposeful functionality. Each project reflects my passion for 
                 intuitive UI, seamless UX, and thoughtful problem-solving through code and design.</p>
-            <div className="h-fit flex flex-wrap gap-10 justify-center"> 
+            <div className="grid grid-cols-[repeat(auto-fill,_minmax(400px,_1fr))] gap-10 w-full"> 
                 {projects.map((p) => (
-                    <div key={p.id}>
-                    <Card project={p}/>
-                    </div>
+                    
+                    <Card key={p._id} project={p}/>
+                    
                     
                 ))}
             </div>

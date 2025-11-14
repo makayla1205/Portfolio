@@ -61,7 +61,7 @@ export default function Navbar() {
             <nav className={`absolute top-0 w-full md:hidden border-t bg-black h-screen ${open ? "block" : "hidden"} pt-20`}>
                 <ul className="flex flex-col pl-10">
                 {navItems.map((item)=> {
-                    return <li className="mt-3 mb-3 text-xl"><Link href={`${item.href}`} onClick={closeMenu}>{item.name}</Link></li>
+                    return <li  key={item.name} className="mt-3 mb-3 text-xl"><Link href={`${item.href}`} onClick={closeMenu}>{item.name}</Link></li>
                 })}
                 </ul>
             </nav> 

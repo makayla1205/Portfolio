@@ -12,15 +12,25 @@ export interface SanityImage {
   alt?: string;
 }
 
+interface Tools {
+  name: string,
+  logo: SanityImage
+}
+
+interface Status {
+  name: string
+}
+
 interface Project {
-    id: number,
+    _id: number,
     title: string,
     slug: string,
     description: string,
-    image: SanityImage,
-    linkGithub: string,
-    linkDemo: string,
-    tools: string
+    CoverImage: SanityImage,
+    GithubLink: string,
+    DemoLink: string,
+    tools: Tools[],
+    status: Status
 }
 interface ProjectCardProps {
   project: Project;
@@ -28,11 +38,11 @@ interface ProjectCardProps {
 
 export default function Card({project}:ProjectCardProps) {
     return (
-        <div className="bg-slate-700 rounded-md w-100 h-full">
-            {project.image && (
+        <div className="bg-gradient-to-br from-blue-800/80 to-purple-900/80 rounded-xl h-full">
+            {project.CoverImage && (
             <Link href={`/projects/${project.slug}`}><Image
-                src={urlFor(project.image).width(800).height(400).url()}
-                alt={project.image.alt || project.title}
+                src={urlFor(project.CoverImage).width(800).height(400).url()}
+                alt={project.CoverImage.alt || project.title}
                 width={800}
                 height={400}
                 quality={100}
@@ -40,9 +50,16 @@ export default function Card({project}:ProjectCardProps) {
             /></Link>
             )}
             <div className="p-5">
-                <Link href={`/projects/${project.slug}`}><p className="text-2xl">{project.title}</p></Link>
-                <p className="mt-3 mb-3 line-clamp-3">{project.description}</p>
-                <Link href={`/projects/${project.slug}`} className="text-xl hover:text-blue-500">View Details &rarr;</Link>
+              <div className="flex flex-wrap gap-5 items-center ">
+                {project.tools.map((tool) => {
+                  return <button key={tool.name} className="bg-slate-900 p-1 pl-5 pr-5 rounded-lg text-sm">{tool.name}</button>
+                })}
+              </div>
+              <div className="mt-5">
+                  <Link href={`/projects/${project.slug}`}><p className="text-2xl">{project.title}</p></Link>
+                  <p className="mt-3 mb-3 line-clamp-3">{project.description}</p>
+                  <Link href={`/projects/${project.slug}`} className="text-xl hover:text-blue-500">View Details &rarr;</Link>
+              </div>
             </div>
         </div>
     );
