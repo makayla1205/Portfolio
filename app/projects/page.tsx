@@ -56,7 +56,7 @@ export default async function Projects() {
     const projects = await client.fetch<Project[]>(PROJECT_QUERY, {}, options);
     return (
         <div className="">
-            <div className="min-h-screen p-10 md:p-20 pt-30 bg-gradient-to-b from-slate-900 to-slate-950 flex flex-col gap-10 items-center justify-center">
+            <div className="min-h-screen p-10 md:p-20 pt-30 bg-gradient-to-b from-slate-950 to-slate-900 flex flex-col gap-10 items-center justify-center">
             <h1 className="text-6xl text-center mt-10">My Projects</h1>
             <p className="text-center text-lg lg:w-3/4">A collection of my creative and technical work — from web applications and e-commerce sites to digital 
                 experiences that blend clean design with purposeful functionality. Each project reflects my passion for 

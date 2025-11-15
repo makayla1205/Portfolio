@@ -41,7 +41,7 @@ export default function Navbar() {
     const closeMenu = () => {setOpen(false)}
 
     return (
-        <header className={`z-100 fixed top-0 left-0 w-full transition-all duration-300 ease-in-out border-b border-slate-700 ${scrolled ? "bg-gradient-to-r from-slate-900/90 to-purple-800/90 shadow-sm" : "bg-transparent"}`}>
+        <header className={`z-100 fixed top-0 left-0 w-full transition-all duration-300 ease-in-out border-b border-slate-900 ${scrolled ? "bg-gradient-to-r from-slate-900/90 to-purple-800/90 shadow-sm" : "bg-transparent"}`}>
             <div className="flex flex-row items-center justify-between p-5 pl-10 pr-10">
                 <div className="text-3xl z-1">
                     <Link href="/">Makayla Boyer</Link>

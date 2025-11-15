@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { urlFor } from "@/src/sanity/client";
-import Link from "next/link";
 
 export interface SanityImage {
   _type: 'image';
@@ -40,14 +39,14 @@ export default function Card({project}:ProjectCardProps) {
       <div className="bg-gradient-to-br from-blue-800/80 to-purple-900/80 rounded-xl h-full border border-transparent hover:border-slate-400 relative shadow-sm shadow-blue-600">
         <div className={`absolute top-0 right-0 p-1 pl-2 pr-2 border rounded-4xl min-w-20 text-center m-4 ${project.status.name === 'Active'? 'border-green-500 bg-green-500/80': ''} ${project.status.name === 'In Progress'? 'border-yellow-500 bg-yellow-500/80': ''} ${project.status.name === 'Archived'? 'border-red-500 bg-red-500/80': ''}`} >{project.status.name}</div>
             {project.CoverImage && (
-            <Link href={`/projects/${project.slug}`}><Image
+            <Image
                 src={urlFor(project.CoverImage).width(800).height(400).url()}
                 alt={project.CoverImage.alt || project.title}
                 width={800}
                 height={400}
-                quality={100}
+                quality={70}
                 className="rounded-tl-xl rounded-tr-xl"
-            /></Link>
+            />
             )}
             <div className="p-5">
               <div className="flex flex-wrap gap-5 items-center ">
@@ -56,9 +55,12 @@ export default function Card({project}:ProjectCardProps) {
                 })}
               </div>
               <div className="mt-5">
-                  <Link href={`/projects/${project.slug}`}><p className="text-2xl">{project.title}</p></Link>
-                  <p className="mt-3 mb-3 line-clamp-3">{project.description}</p>
-                  <Link href={`/projects/${project.slug}`} className="text-xl hover:text-blue-500">View Details &rarr;</Link>
+                  <p className="text-2xl">{project.title}</p>
+                  <p className="mt-3 mb-3">{project.description}</p>
+                  <div className="flex flex-wrap gap-10 items-center justify-start mt-5">
+                    {project.GithubLink && <button className="bg-slate-900 p-1 pl-5 pr-5 rounded-lg text-xl"><a href={project.GithubLink} target="blank">Github Repo</a></button>}
+                    {project.DemoLink &&  <button className="bg-slate-900 p-1 pl-5 pr-5 rounded-lg text-xl"><a href={project.DemoLink} target="blank">Live Link</a></button>}
+                  </div>
               </div>
             </div>
         </div>

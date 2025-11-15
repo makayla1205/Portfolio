@@ -36,7 +36,7 @@ interface Project {
 export default async function Project({params}: {params: {slug: string};}) {
     const { slug } = await params;
     const PROJECT_QUERY = `*[_type == 'Project' && slug.current == "${slug}"]{
-    _id, title, "slug": slug.current, GithubLink, DemoLink, 
+    _id, title, "slug": slug.current, GithubLink, DemoLink, status,
     CoverImage {
         asset->{
             _id,
@@ -58,6 +58,7 @@ export default async function Project({params}: {params: {slug: string};}) {
     return (
         <div className="min-h-screen p-10 lg:p-20 pt-30 bg-gradient-to-b from-slate-900 to-slate-950 flex flex-col gap-10 items-center justify-center">
             <div className="w-full mt-3 text-center flex flex-col items-center">
+                <div className={`text-sm p-1 pl-2 pr-2 border rounded-4xl min-w-20 text-center m-4 ${project.status.name === 'Active'? 'border-green-500 bg-green-500/80': ''} ${project.status.name === 'In Progress'? 'border-yellow-500 bg-yellow-500/80': ''} ${project.status.name === 'Archived'? 'border-red-500 bg-red-500/80': ''}`} >{project.status.name}</div>
                 <h1 className="text-6xl">{project.title}</h1>
                 <p className="mt-3 md:w-1/2">{project.description}</p>
                 <div className="flex flex-wrap gap-5 items-center mt-5">

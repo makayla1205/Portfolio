@@ -1,5 +1,5 @@
 import Cta from "./components/Cta";
-import { Code, Braces, Wallpaper  } from 'lucide-react'
+import { Code, Braces, Wallpaper, Mail, Github } from 'lucide-react'
 import Tools from "./components/Tools";
 import { client } from "@/src/sanity/client";
 import Link from "next/link";
@@ -92,7 +92,7 @@ export default async function Home() {
           </div>
         </div>
       </div>
-      <div className="min-h-screen p-10 lg:p-20 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-slate-800 flex flex-col items-center justify-center gap-10">
+      <div className="min-h-screen p-10 lg:p-20 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-slate-900 flex flex-col items-center justify-center gap-10">
         <h1 className="text-4xl lg:text-6xl text-center text-purple-400">Tools & Technologies</h1>
         <p className="text-center text-md lg:text-lg lg:w-3/4 text-gray-300">My creative toolkit—where exploration, design, and experimentation come together. From design to deployment, 
         every tool plays a role in shaping intuitive, meaningful, and visually polished digital experiences.</p>
@@ -106,12 +106,15 @@ export default async function Home() {
             <Card key={p._id} project={p}/>
           ))}
         </div>
-        <button className="bg-blue-900 p-3 pl-5 pr-5 rounded-md text-xl"><Link href="/projects">View More</Link></button>
+        <button className="bg-blue-500 p-3 pl-5 pr-5 rounded-md text-xl"><Link href="/projects">View More</Link></button>
       </div>
-      <div className="min-h-screen p-10 lg:p-20 bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800 flex flex-col items-center justify-center gap-10">
+      <div className="p-10 lg:p-20 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-slate-900 flex flex-col items-center justify-center gap-10">
         <h1 className="text-4xl lg:text-6xl text-center text-purple-400">Contact Me</h1>
         <p className="text-center text-md lg:text-lg lg:w-3/4 text-gray-300">Let’s bring your ideas to life — I’m currently available for freelance projects.</p>
-        <ContactForm/>
+        <div className="flex gap-5">
+          <Link href="mailto:makayla@makaylaboyer.com"><div className="flex gap-5 border border-slate-500 rounded-lg p-3 bg-gradient-to-br from-blue-800/80 to-purple-900/80"><Mail/>Email</div></Link>
+          <Link href="https://github.com/makayla1205/"><div className="flex gap-5 border border-slate-500 rounded-lg p-3 bg-gradient-to-br from-blue-800/80 to-purple-900/80"><Github/>Github</div></Link>
+          </div>
       </div>
     </div>
     

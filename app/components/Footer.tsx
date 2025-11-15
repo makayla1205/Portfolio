@@ -10,7 +10,7 @@ const Navlinks = () => (
 
 export default function Footer() {
     return (
-        <div className="h-50 bg-slate-900 flex items-center justify-center p-20">
+        <div className="h-50 bg-gradient-to-b from-slate-900 to-purple-900 flex items-center justify-center p-20">
             <div className="w-full flex flex-wrap items-center justify-between">
                 <div className="text-3xl">
                     <Link href="/">Makayla Boyer</Link>
