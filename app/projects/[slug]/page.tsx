@@ -70,7 +70,9 @@ export default async function Project({params}: {params: {slug: string};}) {
                 {project.GithubLink && <button className="bg-gradient-to-r from-green-400/80 to-green-600/80 p-1 pl-5 pr-5 rounded-2xl text-xl"><a href={project.GithubLink} target="blank">Github Repository</a></button>}
                 {project.DemoLink &&  <button className="bg-gradient-to-r from-blue-400/80 to-blue-600/80 p-1 pl-5 pr-5 rounded-2xl text-xl"><a href={project.DemoLink} target="blank">View Demo</a></button>}
             </div>
+            { project.CoverImage && 
             <div className="w-full flex justify-center">
+                
                 <Image
                     src={urlFor(project.CoverImage).width(800).height(400).url()}
                     alt={project.CoverImage.alt || project.title}
@@ -80,6 +82,7 @@ export default async function Project({params}: {params: {slug: string};}) {
                     className="rounded-xl"
                 />
             </div>
+            }
            
             
         </div>
