@@ -73,7 +73,7 @@ export default async function Home() {
           solutions that feel seamless.</p>
         <div className="flex flex-col lg:flex-row gap-10">
           <div className="p-10 rounded-md flex flex-col items-center gap-2 bg-gradient-to-r from-blue-900 to-purple-900 ">
-            <Code  size={"35"} className="text-ree-300"/>
+            <Code  size={"35"} className="text-red-300"/>
             <h2 className="text-center text-xl">Front-End Development</h2>
             <p className="text-center">I create engaging, responsive interfaces that feel good to use. Working with React and Next.js, I focus on clarity, 
               balance, and subtle movement that guides users instead of overwhelming them.</p>
