@@ -4,7 +4,6 @@ const Navlinks = () => (
     <ul className="flex flex-col md:flex-row md:items-center md:gap-5">
         <li><Link href="/">Home</Link></li>
         <li><Link href="/projects">Projects</Link></li>
-        <li><Link href="/resume">Resume</Link></li>
     </ul>
 )
 
