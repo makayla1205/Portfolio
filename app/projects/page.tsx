@@ -1,6 +1,5 @@
 import { client } from "@/src/sanity/client";
 import Card from "../components/ProjectCards";
-import Link from "next/link";
 
 const PROJECT_QUERY = `*[_type == 'Project']{
     _id, title, "slug": slug.current, GithubLink, DemoLink, 

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { urlFor } from "@/src/sanity/client";
 import Link from "next/link";
-import { MoveRight } from 'lucide-react'
 
 export interface SanityImage {
   _type: 'image';
@@ -38,7 +37,8 @@ interface ProjectCardProps {
 
 export default function Card({project}:ProjectCardProps) {
     return (
-        <div className="bg-gradient-to-br from-blue-800/80 to-purple-900/80 rounded-xl h-full">
+      <div className="bg-gradient-to-br from-blue-800/80 to-purple-900/80 rounded-xl h-full border border-transparent hover:border-slate-400 relative shadow-sm shadow-blue-600">
+        <div className={`absolute top-0 right-0 p-1 pl-2 pr-2 border rounded-4xl min-w-20 text-center m-4 ${project.status.name === 'Active'? 'border-green-500 bg-green-500/80': ''} ${project.status.name === 'In Progress'? 'border-yellow-500 bg-yellow-500/80': ''} ${project.status.name === 'Archived'? 'border-red-500 bg-red-500/80': ''}`} >{project.status.name}</div>
             {project.CoverImage && (
             <Link href={`/projects/${project.slug}`}><Image
                 src={urlFor(project.CoverImage).width(800).height(400).url()}
@@ -46,7 +46,7 @@ export default function Card({project}:ProjectCardProps) {
                 width={800}
                 height={400}
                 quality={100}
-                className="rounded-tl-md rounded-tr-md"
+                className="rounded-tl-xl rounded-tr-xl"
             /></Link>
             )}
             <div className="p-5">

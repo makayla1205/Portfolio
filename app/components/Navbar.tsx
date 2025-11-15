@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navlinks = () => (
     <ul className="flex flex-col md:flex-row md:items-center md:gap-5">
@@ -50,18 +50,18 @@ export default function Navbar() {
                     <Navlinks/>
                 </nav>
                 <button 
-                className="md:hidden z-1"
+                className="md:hidden z-1 cursor-pointer"
                 aria-expanded = {open}
                 aria-controls="mobile menu"
                 onClick={() => {setOpen(!open)}}
                 >
-                    <Menu />
+                    {open ? <X /> : <Menu />}
                 </button>
             </div> 
-            <nav className={`absolute top-0 w-full md:hidden border-t bg-black h-screen ${open ? "block" : "hidden"} pt-20`}>
+            <nav className={`absolute top-0 w-full bg-black h-screen transition-all duration-500 ease-in-out ${open ? "translate-y-0" : "-translate-y-full"} pt-20 pb-10`}>
                 <ul className="flex flex-col pl-10">
                 {navItems.map((item)=> {
-                    return <li  key={item.name} className="mt-3 mb-3 text-xl"><Link href={`${item.href}`} onClick={closeMenu}>{item.name}</Link></li>
+                    return <li  key={item.name} className="mt-3 mb-3 text-xl"><Link className="inline-block w-full pt-2 pb-2" href={`${item.href}`} onClick={closeMenu}>{item.name}</Link></li>
                 })}
                 </ul>
             </nav> 

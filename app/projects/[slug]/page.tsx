@@ -59,12 +59,12 @@ export default async function Project({params}: {params: {slug: string};}) {
         <div className="min-h-screen p-10 lg:p-20 pt-30 bg-gradient-to-b from-slate-900 to-slate-950 flex flex-col gap-10 items-center justify-center">
             <div className="w-full mt-3 text-center flex flex-col items-center">
                 <h1 className="text-6xl">{project.title}</h1>
-                <div className="flex flex-wrap gap-5 items-center ">
-                {project.tools.map((tool) => {
-                  return <button key={tool.name} className="bg-slate-900 p-1 pl-5 pr-5 rounded-lg text-sm">{tool.name}</button>
-                })}
-              </div>
-                 <p className="mt-3 md:w-1/2">{project.description}</p>
+                <p className="mt-3 md:w-1/2">{project.description}</p>
+                <div className="flex flex-wrap gap-5 items-center mt-5">
+                    {project.tools.map((tool) => {
+                    return <button key={tool.name} className="border border-slate-400 bg-slate-900 p-1 pl-5 pr-5 rounded-lg text-sm">{tool.name}</button>
+                    })}
+                </div>
             </div>
             <div className="flex flex-wrap gap-10 items-center justify-center">
                 {project.GithubLink && <button className="bg-gradient-to-r from-green-400/80 to-green-600/80 p-1 pl-5 pr-5 rounded-2xl text-xl"><a href={project.GithubLink} target="blank">Github Repository</a></button>}
