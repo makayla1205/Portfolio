@@ -24,7 +24,7 @@ export default function Tools() {
         <div className="flex flex-row flex-wrap gap-10 mt-10 justify-center">
             {ToolItems.map((i)=> {
                 return (
-                    <div key={i.id} className="flex flex-row gap-5 items-center border border-slate-900 w-50 pt-1 pb-1 pl-5 pr-5 rounded-3xl justify-center bg-gradient-to-r from-blue-900 to-purple-900 cursor-pointer min-h-12">
+                    <div key={i.id} className="flex flex-row gap-5 items-center border border-slate-900 w-40 md:w-50 pt-1 pb-1 pl-5 pr-5 rounded-3xl justify-center bg-gradient-to-r from-blue-900 to-purple-900 cursor-pointer min-h-12">
                         <Image
                             src={`/images/${i.logo}`}
                             alt={i.name || ""}
@@ -32,7 +32,7 @@ export default function Tools() {
                             width={40}
                             className=""
                         />
-                        <p className="text-xl">{i.name}</p>
+                        <p className="text-sm md:text-xl">{i.name}</p>
                     </div>
                 )
             })}
